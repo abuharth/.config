@@ -32,11 +32,28 @@ require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
         "lua_ls",
-        "pylsp",
+        -- "pylsp",
+        -- "pyright",
         "clangd",
     },
     handlers = {
         lsp_zero.default_setup,
+
+        -- setup individual language servers
+        pylsp = function()
+            require('lspconfig').pylsp.setup({
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pycodestyle = {
+                                ignore = {'E501'}, -- line too long
+                            },
+                        }
+                    }
+                }
+            })
+        end,
+
     },
 }
 
