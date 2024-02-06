@@ -24,6 +24,7 @@ local cmp_action = require('lsp-zero').cmp_action()
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<CR>'] = cmp.mapping.confirm({select = true}),
     })
 })
