@@ -47,7 +47,7 @@ require("mason-lspconfig").setup {
                     pylsp = {
                         plugins = {
                             pycodestyle = {
-                                ignore = {'E501'}, -- line too long
+                                ignore = {'E501', 'E226'}, -- line too long
                             },
                         }
                     }
