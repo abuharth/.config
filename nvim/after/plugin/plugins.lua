@@ -10,3 +10,5 @@ require("lualine").setup({
         theme = 'horizon',
     }
 })
+
+require("scrollbar").setup()
