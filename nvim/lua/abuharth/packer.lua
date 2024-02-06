@@ -48,4 +48,7 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
+    -- Scrollbar
+    use 'folke/nvim-scrollbar'
+
 end)
