@@ -54,7 +54,14 @@ require("mason-lspconfig").setup {
                 }
             })
         end,
-
+        clangd = function()
+            require('lspconfig').clangd.setup({
+                cmd = {
+                    "clangd",
+                    "--header-insertion=never",
+                }
+            })
+        end,
     },
 }
 
