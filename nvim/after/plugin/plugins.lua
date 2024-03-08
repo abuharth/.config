@@ -12,3 +12,16 @@ require("lualine").setup({
 })
 
 require("scrollbar").setup()
+
+vim.filetype.add({
+    extension = {
+        vert = 'glsl',
+        frag = 'glsl',
+        tesc = 'glsl',
+        tese = 'glsl',
+        geom = 'glsl',
+        comp = 'glsl',
+        vs = 'glsl',
+        fs = 'glsl',
+    }
+})
