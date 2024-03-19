@@ -39,9 +39,9 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- fugitive
-    use 'tpope/vim-fugitive'
-
+    -- gitsigns
+    use 'lewis6991/gitsigns.nvim'
+        
     -- Lualine
     use {
         'nvim-lualine/lualine.nvim',
