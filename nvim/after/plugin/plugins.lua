@@ -19,3 +19,5 @@ vim.filetype.add({
         fs = 'glsl',
     }
 })
+
+require("gitsigns").setup()
