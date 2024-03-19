@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
 
     -- gitsigns
     use 'lewis6991/gitsigns.nvim'
-        
+
     -- Lualine
     use {
         'nvim-lualine/lualine.nvim',
