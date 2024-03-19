@@ -39,8 +39,8 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- Autoclose
-    use 'm4xshen/autoclose.nvim'
+    -- fugitive
+    use 'tpope/vim-fugitive'
 
     -- Lualine
     use {
