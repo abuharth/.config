@@ -20,22 +20,47 @@ lsp_zero.set_server_config({
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_action = require('lsp-zero').cmp_action()
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
         ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<CR>'] = cmp.mapping.confirm({select = true}),
-    })
+    }),
+    window = {
+        completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+        },
+    },
+    formatting = {
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            kind.menu = " (" .. (strings[2] or "") .. ")"
+            return kind
+        end,
+    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' }
+    }, {
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'calc' },
+    }),
 })
+
 
 require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
         "lua_ls",
-        -- "pylsp",
-        -- "pyright",
+        "pylsp",
+        "pyright",
         "clangd",
+        "tsserver",
     },
     handlers = {
         lsp_zero.default_setup,
@@ -59,7 +84,8 @@ require("mason-lspconfig").setup {
                 cmd = {
                     "clangd",
                     "--header-insertion=never",
-                }
+                    "--log=verbose",
+                },
             })
         end,
     },

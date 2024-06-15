@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
     use { 'rebelot/kanagawa.nvim', as = 'kanagawa' }
     use { 'rose-pine/neovim', as = 'rose-pine' }
     use { 'ellisonleao/gruvbox.nvim', as = 'gruvbox' }
+    use { 'folke/tokyonight.nvim', as = 'tokyonight' }
 
     -- Telescope
     use {
@@ -35,12 +36,22 @@ return require('packer').startup(function(use)
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lsp-signature-help'},
+            {'hrsh7th/cmp-calc'},
             {'L3MON4D3/LuaSnip'},
         }
     }
 
+    use 'onsails/lspkind.nvim'
+
     -- gitsigns
     use 'lewis6991/gitsigns.nvim'
+
+    -- netrw nvim
+    use 'prichrd/netrw.nvim'
+
+    -- web-dev icons
+    use 'nvim-tree/nvim-web-devicons'
 
     -- Lualine
     use {
