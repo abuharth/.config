@@ -17,3 +17,5 @@ $ git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-da
 - Python
    - Pyright `pip install pyright`
 - node
+### Note for clangd:
+Projects with external includes need a compile_flags.txt file which specifies what is included
