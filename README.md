@@ -12,7 +12,8 @@ $ git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-da
 ```
 3. Go into lua/abuharth/packer.lua and run:
    `:so` and `:PackerInstall`
-## LSP requirements
+## Requirements
+- Any NerdFont
 - Python
    - Pyright `pip install pyright`
 - node
