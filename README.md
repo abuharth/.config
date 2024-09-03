@@ -15,4 +15,4 @@ $ git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-da
 ## LSP requirements
 - Python
    - Pyright `pip install pyright`
-- npm
+- node
