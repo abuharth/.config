@@ -1,0 +1,26 @@
+# $HOME/.config/alacritty/alacritty.toml
+# by Rito Ghosh 2023-10-06
+
+[window]
+
+opacity = 0.95
+
+padding.x = 5
+padding.y = 5
+dynamic_padding = true
+
+decorations = "Full"
+decorations_theme_variant = "Dark" # "Light" 
+
+[font]
+
+normal.family = "JetBrainsMono Nerd Font"
+# bold.family = "Cascadia Code PL"
+# italic.family = "Cascadia Code PL"
+# bold_italic.family = "Cascadia Code PL"
+
+size = 13.0
+
+[mouse]
+
+hide_when_typing = true
