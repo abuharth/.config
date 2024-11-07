@@ -5,24 +5,33 @@ function ListThemes()
     print("  |    |   |   Y  \\  ___/|  Y Y  \\  ___/ \\___ \\ ")
     print("  |____|   |___|  /\\___  >__|_|  /\\___  >____  >")
     print("                \\/     \\/      \\/     \\/     \\/ ")
+
+    -- all themes
+    for i, v in pairs(vim.fn.getcompletion("", "color")) do
+        print(v)
+    end
+
+    -- all installed themes
+    --[[
     print("-------------------")
-    print("gruvbox")
+    print(" gruvbox")
     print("-------------------")
-    print("rose-pine-main")
-    print("rose-pine-moon")
-    print("rose-pine-dawn")
+    print(" rose-pine-main")
+    print(" rose-pine-moon")
+    print(" rose-pine-dawn")
     print("-------------------")
-    print("kanagawa-wave")
-    print("kanagawa-dragon")
-    print("kanagawa-lotus")
+    print(" kanagawa-wave")
+    print(" kanagawa-dragon")
+    print(" kanagawa-lotus")
     print("-------------------")
-    print("tokyonight-storm")
-    print("tokyonight-moon")
-    print("tokyonight-day")
-    print("tokyonight-night")
+    print(" tokyonight-storm")
+    print(" tokyonight-moon")
+    print(" tokyonight-day")
+    print(" tokyonight-night")
     print("-------------------")
-    print("dracula")
-    print("dracula-soft")
+    print(" dracula")
+    print(" dracula-soft")
+    --]]
 end
 
 function SetTheme(color, transparency)
