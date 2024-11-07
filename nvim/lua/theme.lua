@@ -1,4 +1,11 @@
 function ListThemes()
+    print("___________.__                                  ")
+    print("\\__    ___/|  |__   ____   _____   ____   ______")
+    print("  |    |   |  |  \\_/ __ \\ /     \\_/ __ \\ /  ___/")
+    print("  |    |   |   Y  \\  ___/|  Y Y  \\  ___/ \\___ \\ ")
+    print("  |____|   |___|  /\\___  >__|_|  /\\___  >____  >")
+    print("                \\/     \\/      \\/     \\/     \\/ ")
+    print("-------------------")
     print("gruvbox")
     print("-------------------")
     print("rose-pine-main")
@@ -28,15 +35,9 @@ function SetTheme(color, transparency)
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end
 
-    local file = io.open("nvim/lua/_theme", "w")
-    io.output(file)
-    io.write(color, "\n")
-    if transparency then
-        io.write("1\n")
-    else
-        io.write("-1\n")
-    end
-    io.close(file)
+    local cmd = color .. ' ' .. (transparency and "1" or "-1")
+
+    vim.fn.system("echo \"" .. cmd .. "\" > ~/.config/nvim/lua/_theme")
 
     --[[
     require("lualine").setup({
@@ -48,18 +49,12 @@ function SetTheme(color, transparency)
 end
 
 function LoadTheme()
-    local file = io.open("nvim/lua/_theme", "r")
-    io.input(file)
-    local color = io.read()
-    local transparency
-    if io.read() == '1' then
-        transparency = true
-    else
-        transparency = false
+    local str = vim.fn.system("cat ~/.config/nvim/lua/_theme")
+    local lines = {}
+    for s in string.gmatch(str, "%S+") do
+        table.insert(lines, s)
     end
-    io.close(file)
-
-    SetTheme(color, transparency)
+    SetTheme(lines[1], (lines[2] == '1') and true or false)
 end
 
 LoadTheme()

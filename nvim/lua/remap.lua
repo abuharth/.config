@@ -9,3 +9,4 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- shorcuts
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
+vim.keymap.set("n", "<C-t>", "<cmd>lua ListThemes()<cr>:lua SetTheme('')<Left><Left>")
