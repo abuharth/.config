@@ -19,14 +19,14 @@ function ListThemes()
 end
 
 function SetTheme(color, transparency)
-	vim.cmd.colorscheme(color)
+    vim.cmd.colorscheme(color)
 
-	if transparency then
+    if transparency then
         vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
 
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	end
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end
 
     local file = io.open("nvim/lua/_theme", "w")
     io.output(file)
@@ -38,11 +38,13 @@ function SetTheme(color, transparency)
     end
     io.close(file)
 
-    -- require("lualine").setup({
-    --     options = {
-    --         theme = "auto",
-    --     }
-    -- })
+    --[[
+    require("lualine").setup({
+        options = {
+            theme = "auto",
+        }
+    })
+    -- ]]
 end
 
 function LoadTheme()

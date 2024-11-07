@@ -19,7 +19,7 @@ vim.call('plug#begin')
     Plug('onsails/lspkind.nvim')
     -- tmux-navigator
     Plug('christoomey/vim-tmux-navigator')
-    -- possibly add lualine and webdevicons
+    -- maybe add lualine and webdevicons
 
 vim.call('plug#end')
 
