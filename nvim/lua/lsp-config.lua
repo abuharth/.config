@@ -5,6 +5,11 @@ lspconfig_defaults.capabilities = vim.tbl_deep_extend(
     lspconfig_defaults.capabilities,
     require('cmp_nvim_lsp').default_capabilities()
 )
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        border = "single",
+    }
+)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -23,11 +28,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
     vim.keymap.set('n', ']d',
     function()
-        vim.diagnostic.goto_next({ float = true })
+        vim.diagnostic.goto_next({ float = {
+            border = 'single',
+        } })
     end)
     vim.keymap.set('n', '[d',
     function()
-        vim.diagnostic.goto_prev({ float = true })
+        vim.diagnostic.goto_prev({ float = {
+            border = 'single',
+        }
+    })
     end)
 end,
 })
@@ -106,8 +116,14 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({select = true}),
     }),
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+            border = 'single',
+            winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
+        }),
+        documentation = cmp.config.window.bordered({
+            border = 'single',
+            winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
+        }),
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
