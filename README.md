@@ -29,6 +29,8 @@ example on Arch:
 ```
 sudo pacman -S lua-language-server
 sudo pacman -S clang
+sudo npm install -g typescript typescript-language-server
+sudo npm install -g emmet-ls
 ```
 
 Add a snippet to enable language server in `.config/nvim/lua/lsp.lua`
@@ -44,6 +46,8 @@ nvim-lspconfig provides a [configs](https://github.com/neovim/nvim-lspconfig/blo
 The following lsps are already configured in my setup:
 - Clangd
 - lua-ls
+- ts-ls
+- emmet-ls
 
 ### Install Plugins
 

@@ -20,8 +20,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  end,
+    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    vim.keymap.set('n', ']d',
+    function()
+        vim.diagnostic.goto_next({ float = true })
+    end)
+    vim.keymap.set('n', '[d',
+    function()
+        vim.diagnostic.goto_prev({ float = true })
+    end)
+end,
 })
 
 require('lspconfig').clangd.setup({
@@ -32,7 +40,25 @@ require('lspconfig').clangd.setup({
     }
 })
 
-require'lspconfig'.lua_ls.setup {
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').emmet_ls.setup({
+    capabilities = capabilities,
+    -- on_attach = on_attach,
+    filetypes = { "html", --[["css", "eruby", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue"--]] },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
+
+require('lspconfig').ts_ls.setup{}
+
+require('lspconfig').lua_ls.setup {
     on_init = function(client)
         if client.workspace_folders then
             local path = client.workspace_folders[1].name
