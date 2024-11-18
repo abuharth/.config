@@ -9,6 +9,8 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
+vim.opt.signcolumn = "yes"
+
 vim.opt.colorcolumn = "80"
 vim.opt.number = true
 vim.opt.relativenumber = true
