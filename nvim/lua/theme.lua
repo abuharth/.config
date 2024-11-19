@@ -37,9 +37,15 @@ function ThemesWindow()
     -- quit
     local quit_mappings = { 'q', 'u', '<cr>', '<Escape>' }
     for i,v in pairs(quit_mappings) do
-        vim.api.nvim_buf_set_keymap(buf, 'n', v,
-            "<cmd> lua vim.api.nvim_win_close(0, true)<cr>",
-        {nowait=true, noremap=true, silent=true})
+        if v == '<cr>' then
+            vim.api.nvim_buf_set_keymap(buf, 'n', v,
+            "<cmd>lua SetTheme(math.min(vim.api.nvim_buf_line_count(0) - 7, math.max(1, vim.api.nvim_win_get_cursor(0)[1] - 7)))<cr><cmd>lua vim.api.nvim_win_close(0, true)<cr>",
+            {nowait=true, noremap=true, silent=true})
+        else
+            vim.api.nvim_buf_set_keymap(buf, 'n', v,
+            "<cmd>lua vim.api.nvim_win_close(0, true)<cr>",
+            {nowait=true, noremap=true, silent=true})
+        end
     end
 
     local move_mappings = { 'h', 'j', 'k', 'l', '<Up>', "<Down>", "<Left>", "Right>" }
@@ -74,7 +80,16 @@ function ThemesWindow()
     end
 
     vim.api.nvim_buf_set_lines(buf, -1, -1, false, result)
-    vim.api.nvim_win_set_cursor(win, {8, 0})
+    local colorscheme = vim.g.colors_name
+    local colorschemeNum = 0
+    for i, v in pairs(vim.fn.getcompletion("", "color")) do
+        if v == colorscheme then
+            colorschemeNum = i
+            break
+        else
+        end
+    end
+    vim.api.nvim_win_set_cursor(win, {8 + colorschemeNum - 1, 0})
 end
 
 function SetTheme(color, transparency)
