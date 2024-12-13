@@ -42,6 +42,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 end,
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 require('lspconfig').clangd.setup({
     cmd = {
         "clangd",
@@ -50,8 +53,6 @@ require('lspconfig').clangd.setup({
     }
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').emmet_ls.setup({
     capabilities = capabilities,
     -- on_attach = on_attach,
@@ -94,6 +95,10 @@ require('lspconfig').lua_ls.setup {
     settings = {
         Lua = {}
     }
+}
+
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
 }
 
 -- nvim-cmp

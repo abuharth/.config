@@ -1,6 +1,8 @@
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.showmatch = true
+vim.opt.guicursor = ""
+vim.opt.termguicolors = true
 
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -25,3 +27,8 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 
+-- vim.filetype.add ({
+--     extension = {
+--         txt = 'help',
+--     }
+-- })

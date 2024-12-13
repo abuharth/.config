@@ -11,6 +11,7 @@ vim.call('plug#begin')
     Plug('ellisonleao/gruvbox.nvim')
     Plug('folke/tokyonight.nvim')
     Plug('rebelot/kanagawa.nvim')
+    Plug('navarasu/onedark.nvim')
     -- lsp
     Plug('neovim/nvim-lspconfig')
     Plug('hrsh7th/nvim-cmp')
@@ -19,6 +20,10 @@ vim.call('plug#begin')
     Plug('onsails/lspkind.nvim')
     -- tmux-navigator
     Plug('christoomey/vim-tmux-navigator')
+    -- theme selector
+    Plug('zaldih/themery.nvim')
+    -- colorizer
+    Plug('norcalli/nvim-colorizer.lua')
     -- maybe add lualine and webdevicons
 
 vim.call('plug#end')
